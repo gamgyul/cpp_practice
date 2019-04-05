@@ -1,0 +1,8 @@
+#include <iostream>
+class P{
+    public:
+void pprint(){
+    
+    std::cout<< "test" << std::endl;
+}
+};

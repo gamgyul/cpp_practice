@@ -1,0 +1,52 @@
+(a) List 사용 혹은 array
+    답 : List , 알파벳 순서로 정렬해야되서 중간에 삽입되는게 효율적임
+(b) deque
+(c) vector로 sort?
+    답: vector sorting을 위해서는 random access가 필요하고 출력하려면 vector가 좋음
+
+
+9.2 
+std::list < std::deque <int> > l1;
+
+9.3 
+begin에서 end까지, begin이 end를 앞지르면 안된다.
+begin 과 end는 요소 혹은 요소 다음 위치를 참조해야한다.
+
+list<int> lst1;
+list<int>::iterator iter1 = lst1.begin();
+list<int>::iterator iter2 = lst1.end();
+//while(iter1 < iter2)
+while(iter1 != iter2)
+// 리스트는 산술연산이 안됨!!
+
+9.7
+vertor<int>::size_type
+
+9.8 요소에 기록하려면 vector<string>::iterator 읽으려면 const_iterator
+
+9.9 cbegin은 const_iterator read만 사용하면 이걸쓰자
+
+9.10 
+it1: verctor<int>::iterator 
+it2: verctor<int>::const_iterator
+it3: verctor<int>::const_iterator
+it4: verctor<int>::const_iterator
+
+9.11 
+(1) vector<int> vi; (기본 초기화), (2) vi(10); vi(10,1)
+(4) vi = {1,2,3}; (5) v2 = v1; (6) v1(begin, end)
+
+9.12
+복사하는거는 호환되는 타입변환이 안됨. 
+
+9.22 무한루프빠질ㄷ진다 iter가 안바뀌어서
+9.23 다같음. 
+9.25 elm1,elm2같으면 안삭제. 뒷범위가 벗어나면 에러나곘지 뭐
+9.29 기본 생성자가 있다고 가정하면 75개를 기본초기화로 더 늘림. 그이후 뒤 90개 지움.
+9.30 기본생성자가 있어야함.
+9.31 list의 경우+=2가안됨 forward_list는 아얘 다른걸써야됨.
+
+9.35 capacity > size 미리할당한 거니까
+9.36 없다
+9.37 둘다 realloc이 없다. list의 경우 연속된 메모리 공간이 아니고 array는 fixsize다
+9.38

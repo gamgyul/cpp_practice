@@ -1,0 +1,60 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "g++ boost",
+            "type": "shell",
+            "command": "g++",
+            "args": [
+                "-std=c++11",
+                "-g",
+                "-I",
+                "/usr/local/boost_1_67_0",
+                "${fileDirname}/${fileBasename}",
+                "-o",
+                "${fileDirname}/${fileBasenameNoExtension}",
+                "-lboost_system",
+                "-lboost_thread",
+                "-lpthread"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "g++ debug",
+            "type": "shell",
+                        "command": "g++",
+            "args": [
+                "-g",
+                "${fileDirname}/${fileBasename}",
+                "-o",
+                "${fileDirname}/a.out",
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "clang c++11",
+            "type": "shell",
+            "command": "clang++",
+            "args": [
+                "-m64",
+                "-std=c++11",
+                "-stdlib=libstdc++",
+                "${fileDirname}/${fileBasename}",
+                "-o",
+                "${fileDirname}/${fileBasenameNoExtension}"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        }
+    ]
+}
