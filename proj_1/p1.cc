@@ -3,17 +3,16 @@
 #include "account.h"
 
 
-int main (int arcg, char** argv) {
+int main(int arcg, char** argv) {
     int menu_num, account_num, money, total_money;
     int rotate_cnt = 0;
     char name[15] = {0, };
-
-    while(1) {
-        print_menu();
+    account::info current_account;
+    while (1) {
+        account::print_menu();
         std::cin >> menu_num;
 
-        switch (menu_num)
-        {
+        switch (menu_num) {
             case 1:
                 std::cout << " °èÁÂ°³¼³" <<std::endl;
                 std::cout << " °èÁÂ¹øÈ£:" <<std::endl;
@@ -36,7 +35,7 @@ int main (int arcg, char** argv) {
                     //     continue;
                     // }
                 }
-                    std::cout << name << "´Ô" << std::endl;
+                    std::cout << current_account.getname() << "´Ô" << std::endl;
                     std::cout << " ÀÔ±Ý ±Ý¾×:" <<std::endl;
                     std::cin >> money;
                 break;
@@ -44,8 +43,8 @@ int main (int arcg, char** argv) {
             case 3: 
             rotate_cnt = 0;
                 while (rotate_cnt <= 3) {
-                    std::cout << " ÀÔ±Ý" <<std::endl;
-                    std::cout << " °èÁÂ¹øÈ£:" <<std::endl;
+                    std::cout << " ÀÔ±Ý" << std::endl;
+                    std::cout << " °èÁÂ¹øÈ£:" << std::endl;
                     std::cin >> account_num;
                     // rc = select(account_num, name);
                     // if (rc != success) {
