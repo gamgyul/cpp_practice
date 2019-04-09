@@ -10,7 +10,7 @@ void account::print_menu(){
         std::cout << "5. 종료          " <<std:: endl;
     
 }
-account::info account::get_info_from_num(int input_num){
+account::info account::get_info_from_num(){
    int rotate_cnt = 0;
                 while (rotate_cnt <= 3) {
                     std::cout << " 입금" <<std::endl;
@@ -23,4 +23,5 @@ account::info account::get_info_from_num(int input_num){
                     //     continue;
                     // }
                 }
+
 }

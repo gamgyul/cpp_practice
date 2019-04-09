@@ -23,18 +23,7 @@ int main(int arcg, char** argv) {
                 std::cout << " 계좌생성 완료" <<std::endl;
                 break;
             case 2:
-                rotate_cnt = 0;
-                while (rotate_cnt <= 3) {
-                    std::cout << " 입금" <<std::endl;
-                    std::cout << " 계좌번호:" <<std::endl;
-                    std::cin >> account_num;
-                    // rc = select(account_num, name);
-                    // if (rc != success) {
-                    //     std::cout << "잘못된 계좌입니다. 다시 입력해 주세요" <<std::endl;
-                    //     rotate_cnt++;
-                    //     continue;
-                    // }
-                }
+                current_account = account::get_info_from_num();
                     std::cout << current_account.getname() << "님" << std::endl;
                     std::cout << " 입금 금액:" <<std::endl;
                     std::cin >> money;
