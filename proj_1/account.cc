@@ -1,27 +1,35 @@
 #include <iostream>
 #include <string>
 #include "account.h"
+using namespace account;
 void account::print_menu(){
     std::cout << "------Menu------" <<std:: endl;
-        std::cout << "1. °èÁÂ °³¼³      " <<std:: endl;
-        std::cout << "2. ÀÔ±Ý          " <<std:: endl;
-        std::cout << "3. Ãâ±Ý          " <<std:: endl;
-        std::cout << "4. °èÁÂ Á¤º¸ Ãâ·Â  " <<std:: endl;
-        std::cout << "5. Á¾·á          " <<std:: endl;
+        std::cout << "1. ê³„ì¢Œ ê°œì„¤      " <<std:: endl;
+        std::cout << "2. ìž…ê¸ˆ          " <<std:: endl;
+        std::cout << "3. ì¶œê¸ˆ          " <<std:: endl;
+        std::cout << "4. ê³„ì¢Œ ì •ë³´ ì¶œë ¥  " <<std:: endl;
+        std::cout << "5. ì¢…ë£Œ          " <<std:: endl;
     
 }
-account::info account::get_info_from_num(){
+info get_info_from_num(dbutil::database db){
    int rotate_cnt = 0;
+   int input_num;
+   info info_class;
                 while (rotate_cnt <= 3) {
-                    std::cout << " ÀÔ±Ý" <<std::endl;
-                    std::cout << " °èÁÂ¹øÈ£:" <<std::endl;
+                    std::cout << " ìž…ê¸ˆ" <<std::endl;
+                    std::cout << " ê³„ì¢Œë²ˆí˜¸:" <<std::endl;
                     std::cin >> input_num;
-                    // rc = select(account_num, name);
+                    // rc = db.select(account_num, info_class);
                     // if (rc != success) {
-                    //     std::cout << "Àß¸øµÈ °èÁÂÀÔ´Ï´Ù. ´Ù½Ã ÀÔ·ÂÇØ ÁÖ¼¼¿ä" <<std::endl;
+                    //     std::cout << "ìž˜ëª»ëœ ê³„ì¢Œìž…ë‹ˆë‹¤. ë‹¤ì‹œ ìž…ë ¥í•´ ì£¼ì„¸ìš”" <<std::endl;
                     //     rotate_cnt++;
                     //     continue;
                     // }
+                    //else 
+                    //    break;
                 }
+                if (rotate_cnt >3 )
+                    exit(1);
+    return info_class;
 
 }

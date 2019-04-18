@@ -1,66 +1,73 @@
 #include <iostream>
 #include <string>
 #include "account.h"
+#include "dbutil.h"
 
 
 int main(int arcg, char** argv) {
-    int menu_num, account_num, money, total_money;
+    int rc, menu_num, account_num, money, total_money;
     int rotate_cnt = 0;
+    bool is_quit =false;
     char name[15] = {0, };
     account::info current_account;
-    while (1) {
+    dbutil::database db;
+    rc = db.connect("tibero","tibero","tmax");
+    while (!is_quit) {
+        
         account::print_menu();
+        
         std::cin >> menu_num;
 
         switch (menu_num) {
             case 1:
-                std::cout << " °èÁÂ°³¼³" <<std::endl;
-                std::cout << " °èÁÂ¹øÈ£:" <<std::endl;
+                std::cout << " ê³„ì¢Œê°œì„¤" <<std::endl;
+                std::cout << " ê³„ì¢Œë²ˆí˜¸:" <<std::endl;
                 std::cin >> account_num;
-                std::cout << " ÀÌ¸§:" <<std::endl;
+                std::cout << " ì´ë¦„:" <<std::endl;
                 std::cin >> name;
-                //create(account_num,name);
-                std::cout << " °èÁÂ»ý¼º ¿Ï·á" <<std::endl;
+                //insert(account_num,name);
+                std::cout << " ê³„ì¢Œìƒì„± ì™„ë£Œ" <<std::endl;
                 break;
             case 2:
-                current_account = account::get_info_from_num();
-                    std::cout << current_account.getname() << "´Ô" << std::endl;
-                    std::cout << " ÀÔ±Ý ±Ý¾×:" <<std::endl;
+//                current_account = account::get_info_from_num();
+                    std::cout << current_account.getname() << "ë‹˜" << std::endl;
+                    std::cout << " ìž…ê¸ˆ ê¸ˆì•¡:" <<std::endl;
                     std::cin >> money;
                 break;
                     //update(account_num, money);
             case 3: 
             rotate_cnt = 0;
                 while (rotate_cnt <= 3) {
-                    std::cout << " ÀÔ±Ý" << std::endl;
-                    std::cout << " °èÁÂ¹øÈ£:" << std::endl;
+                    std::cout << " ìž…ê¸ˆ" << std::endl;
+                    std::cout << " ê³„ì¢Œë²ˆí˜¸:" << std::endl;
                     std::cin >> account_num;
                     // rc = select(account_num, name);
                     // if (rc != success) {
-                    //     std::cout << "Àß¸øµÈ °èÁÂÀÔ´Ï´Ù. ´Ù½Ã ÀÔ·ÂÇØ ÁÖ¼¼¿ä" <<std::endl;
+                    //     std::cout << "ìž˜ëª»ëœ ê³„ì¢Œìž…ë‹ˆë‹¤. ë‹¤ì‹œ ìž…ë ¥í•´ ì£¼ì„¸ìš”" <<std::endl;
                     //     rotate_cnt++;
                     //     continue;
                     // }
                 }
-                    std::cout << name << "´Ô" << std::endl;
-                    std::cout << " ÀÔ±Ý ±Ý¾×:" <<std::endl;
+                    std::cout << name << "ë‹˜" << std::endl;
+                    std::cout << " ìž…ê¸ˆ ê¸ˆì•¡:" <<std::endl;
                     std::cin >> money;
                     
                     //update(account_num, money);
                 break;
             case 4:
                 while (rotate_cnt <= 3) {
-                    std::cout << " °èÁÂÁ¤º¸" <<std::endl;
-                    std::cout << " °èÁÂ¹øÈ£:" <<std::endl;
+                    std::cout << " ê³„ì¢Œì •ë³´" <<std::endl;
+                    std::cout << " ê³„ì¢Œë²ˆí˜¸:" <<std::endl;
                     std::cin >> account_num;
                     // rc = select(account_num, name);
                     // if (rc != success) {
-                    //     std::cout << "Àß¸øµÈ °èÁÂÀÔ´Ï´Ù. ´Ù½Ã ÀÔ·ÂÇØ ÁÖ¼¼¿ä" <<std::endl;
+                    //     std::cout << "ìž˜ëª»ëœ ê³„ì¢Œìž…ë‹ˆë‹¤. ë‹¤ì‹œ ìž…ë ¥í•´ ì£¼ì„¸ìš”" <<std::endl;
                     //     rotate_cnt++;
                     //     continue;
                     // }
                 }
             default:
+                is_quit = true;
                 break;
         } 
 

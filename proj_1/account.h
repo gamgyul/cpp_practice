@@ -3,6 +3,8 @@
 
 #include <iostream>
 #include <string>
+#include <cstdlib>
+#include "dbutil.h"
 namespace account{
 
 class info{
@@ -11,15 +13,14 @@ private:
     int account_num;
     int total_money;
 public:
-    inline std::string getname();
     int connect_account(int account);
 
-    std::string getname(){
+    inline std::string getname(){
         return this->name;
     }
 };
 
 void print_menu();
-info get_info_from_num();
-}
+info get_info_from_num(dbutil::database db);
+}  // namespace account
 #endif  // ACCOUNT_H_
