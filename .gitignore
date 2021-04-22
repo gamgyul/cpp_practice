@@ -1,7 +1,9 @@
 *.[oa]
 *.out
-.vscode/ipch/
-/CMakeCache.txt
-/cmake_install.cmake
-/CMakeFiles/
-/Makefile
+.vscode/
+*/CMakeCache.txt
+*/cmake_install.cmake
+*/CMakeFiles/
+*/Makefile
+
+

@@ -28,7 +28,7 @@ int main(int arcg, char** argv) {
                 std::cin >> account_num;
                 std::cout << " 이름:" <<std::endl;
                 std::cin >> name;
-                //db.insert(account_num,name);
+                db.insert(account_num,name);
                 std::cout << " 계좌생성 완료" <<std::endl;
                 break;
             case 2:

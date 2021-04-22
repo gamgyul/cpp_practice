@@ -4,14 +4,14 @@
 #include "dbutil.h"
 
 using namespace dbutil;
-int database::connect(char* dsn, char* user, char* pwd ){
+int database::connect(std::string dsn, std::string user, std::string pwd ){
     try {
         ret = SQLAllocHandle(SQL_HANDLE_ENV, SQL_NULL_HANDLE, &env);
         if (ret == SQL_ERROR) {throw std::runtime_error("SQLalloc Fail");}
         ret = SQLAllocHandle(SQL_HANDLE_DBC, env, &dbc);
         error_check(ret, SQL_HANDLE_ENV, env, buf);
         if (ret == SQL_ERROR) {throw std::runtime_error("SQLalloc Fail");}
-        ret = SQLConnect(dbc, (SQLCHAR*)dsn, SQL_NTS, (SQLCHAR*)user, SQL_NTS, (SQLCHAR*)pwd, SQL_NTS);
+        ret = SQLConnect(dbc, (SQLCHAR*)dsn.c_str(), SQL_NTS, (SQLCHAR*)user.c_str(), SQL_NTS, (SQLCHAR*)pwd.c_str(), SQL_NTS);
         if (ret == SQL_ERROR) {throw std::runtime_error("SQLConnect fail");}
         is_connected = true;
     }
@@ -22,9 +22,25 @@ int database::connect(char* dsn, char* user, char* pwd ){
     
     return (is_connected ? 0 : -1);
 }
-// int database::insert(int account_num, char* name){
-// 	ret SQL
-// }
+int database::insert(int account_num, char* name){
+	try {
+        ret = SQLAllocHandle(SQL_HANDLE_STMT, dbc, &stmt);
+        if (ret == SQL_ERROR) {throw std::runtime_error("SQLalloc Fail");}
+        ret = SQLBindParameter(stmt, 1, SQL_PARAM_INPUT, SQL_C_INT, SQL_INTEGER, 0, 0, &account_num, sizeof(int), NULL);
+        if (ret == SQL_ERROR) {throw std::runtime_error("SQLBind1 Fail");}
+        ret = SQLBindParameter(stmt, 2, SQL_PARAM_INPUT, SQL_C_CHAR, SQL_VARCHAR, 0, 0, name, sizeof(name), NULL);
+        if (ret == SQL_ERROR) {throw std::runtime_error("SQLBind2 Fail");}
+        ret = SQLExecDirect(stmt, (SQLCHAR *)"INSERT INTO ACCOUNT VALUES (?,?,0)", SQL_NTS);
+        if (ret == SQL_ERROR) {throw std::runtime_error("SQLExec Fail");}
+        ret = SQLFreeHandle(SQL_HANDLE_STMT, stmt);
+        if (ret == SQL_ERROR) {throw std::runtime_error("SQLFree Fail");}
+    }
+    catch(std::runtime_error err) {
+        error_check(ret, SQL_HANDLE_STMT, stmt, buf);
+        return -1;
+    }
+    return 0;
+}
 
 //int database::insert();
 

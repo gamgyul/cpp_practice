@@ -34,7 +34,7 @@ public:
     database(){
         is_connected = false;
     }
-    int connect(char* dsn, char* user, char* pwd );
+    int connect(std::string dsn, std::string user, std::string pwd );
 	int insert(int account_num, char* name);
 
 };
