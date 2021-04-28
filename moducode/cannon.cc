@@ -56,7 +56,8 @@ Cannon::Cannon(const Cannon &name) {
     coord_y = name.coord_y;
     damage =5;
     is_dead = false;
-    name_ = NULL;
+    name_ = new char[strlen(name.name_ + 1)];
+    strcpy(name_, name.name_);
 }
 
 Cannon::~Cannon() {

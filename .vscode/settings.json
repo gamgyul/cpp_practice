@@ -34,6 +34,9 @@
         "string": "cpp",
         "cmath": "cpp",
         "random": "cpp",
-        "numeric": "cpp"
+        "numeric": "cpp",
+        "cstdarg": "cpp",
+        "cstring": "cpp",
+        "hashtable": "cpp"
     }
 }

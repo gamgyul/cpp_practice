@@ -44,6 +44,10 @@ $ git branch -d btest
 Deleted branch btest (was 307013b).
 ```
 
+기타 브랜치 명령어
+---------------
+`git branch -u origin/master` : 현재 브랜치를 remote의 origin/master와 연결한다.
+
 ## LOG
 
 자주쓰는 로그 명령어
