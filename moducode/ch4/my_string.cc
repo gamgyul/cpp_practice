@@ -6,6 +6,7 @@ public:
     MyString(char c, int n);
     MyString(const char *s);
     MyString(const MyString &s);
+    explicit MyString(int capacity);
 
     void add_string(const MyString &s);
     void copy_string(const MyString &s);
@@ -17,7 +18,14 @@ public:
 private:
     int len;
     char *str;
+    int capacity_;
 };
+
+MyString::MyString(int capacity) {
+    str = new char[capacity];
+    len = 0;
+    capacity_ =  capacity;
+}
 
 MyString::MyString(char c, int n) {
     str = new char[(n )];
