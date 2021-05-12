@@ -7,6 +7,8 @@ public:
     MyString(const char *s);
     MyString(const MyString &s);
     explicit MyString(int capacity);
+    ~MyString();
+    bool operator==(MyString & str);
 
     void add_string(const MyString &s);
     void copy_string(const MyString &s);
@@ -61,6 +63,10 @@ MyString::MyString(const MyString &s) {
 MyString::~MyString() {
     delete[] str;
 }
+
+bool MyString::operator==(MyString & s) {
+    return strcmp(str, s.str) ? false: true;
+};
 
 void MyString::add_string(const MyString &s) {
     char * tmp = new char[len + s.len + 1];
@@ -117,6 +123,7 @@ std::vector<int> MyString::getPi(const MyString &s) {
             j++;
         p[i] = j;
     }
+    return p;
 }
 
 int MyString::find(const MyString &s) {
@@ -147,6 +154,7 @@ int MyString::find(const MyString &s) {
         // }
 
     }
+    return -1;
 }
 
 bool MyString::is_same(const MyString &s) {
@@ -169,4 +177,5 @@ int main() {
     MyString S1("testest");
     MyString S2("test");
     MyString S3 = S2;
+    std::cout << (S3 == S1) << std::endl;
 }
