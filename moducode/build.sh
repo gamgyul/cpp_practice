@@ -2,4 +2,4 @@
 
 
 
-clang++ -std=c++11 -g -lpthread -I `pwd` -o `basename $@ .cc`.out $@
+clang++ -std=c++11 -g -lpthread -I `pwd` -I ../ -o `basename $@ .cc`.out $@

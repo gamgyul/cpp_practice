@@ -37,6 +37,7 @@
         "numeric": "cpp",
         "cstdarg": "cpp",
         "cstring": "cpp",
-        "hashtable": "cpp"
+        "hashtable": "cpp",
+        "cinttypes": "cpp"
     }
 }

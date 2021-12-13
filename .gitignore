@@ -1,5 +1,6 @@
 *.[oa]
 *.out
+.vscode/*
 .vscode/
 */CMakeCache.txt
 */cmake_install.cmake
